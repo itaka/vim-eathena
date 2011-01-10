@@ -49,7 +49,7 @@ syn keyword scriptSpecialLabels OnInit: OnInterIfInit: OnInterIfInitOnce: OnAgit
 
 "Town and Fields
 syn keyword scriptTown	prontera prontera izlude moc_ruins geffen payon pay_arche alberta aldebaran yuno lighthalzen einbroch einbech comodo umbala amatsu gonryun ayothaya louyang hugel rachel veins
-syn match scriptFieldsDungeon	"[a-z]\{1,7}_[a-z0-9]\{1,2}"
+syn match scriptFieldsDungeon	"^[a-z]\{1,7}_[a-z0-9]\{1,2}"
 syn match scriptFields	"[a-z]\+_fild[0-9]*"
 
 "Messages
