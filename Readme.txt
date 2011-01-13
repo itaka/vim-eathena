@@ -1,5 +1,7 @@
 Author: Itaka
 email: itaka.dev@gmail.com
+version: 1.1
+
 ---------------------------------------------------------------
 If you have Vim
   then ...
@@ -16,6 +18,13 @@ put files in syntax and ftpplugin folders
 To use autocomplite we must key in insert mod  <c-x><c-o>
 ---------------------------------------------------------------
 To use template we must key in insert mod >ft and >nt
+---------------------------------------------------------------
+---------------------------------------------------------------
+You can may take documentation about any special words or  function
+or simply introduction in eAthena script simply using the command :h ea-<word>
+
+>example
+:h ea-syntax
 ---------------------------------------------------------------
 =======Any suggestions and help in expanding the welcome=======
 NOTE:
