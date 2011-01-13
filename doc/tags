@@ -1,0 +1,17 @@
+introduction-eathena-script	eathenascript.txt	/*introduction*
+structure-eathena-script	eathenascript.txt	/*structure*
+syntax-eathena-script	eathenascript.txt	/*syntax*
+script-eathena-script	eathenascript.txt	/*script-loading-structure*
+rid-eathena-script	eathenascript.txt	/*rid*
+item-eathena-script	eathenascript.txt	/*item*
+numbers-eathena-script	eathenascript.txt	/*numbers*
+variables-eathena-script	eathenascript.txt	/*variables-scope*
+scope-eathena-script	eathenascript.txt	/*variables-scope*
+arrays-eathena-script	eathenascript.txt	/*arrays*
+type-eathena-script	eathenascript.txt	/*variable-type-availability*
+special-variables-eathena-script	eathenascript.txt	/*special-variables*
+operators-eathena-script	eathenascript.txt	/*operators*
+labels-eathena-script	eathenascript.txt	/*labels*
+commands-eathena-script	eathenascript.txt	/*commands-functions*
+functions-eathena-script	eathenascript.txt	/*commands-functions*
+ea-mes	eathenascript.txt	/*ea-mes*
