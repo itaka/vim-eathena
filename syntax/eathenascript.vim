@@ -1,11 +1,12 @@
 "Vim syntax file
 " Language:         eAthena Script
 " Maintainer:		Itaka <itaka.dev@gmail.com>
-" Version:          1.0
+" Version:          1.1
 " ----------------------------------------------------------------------------
 
-"contains=eathenaComment,eathenaString,eathenaASCIICode,eathenaFloat,eathenaInteger,eathenaTown,eathenaFields,eathenaFieldsDungeon,eathenaSpecialWords,eathenaSpecialInsert,eathenaSpecialContained ,eathenaConditional,eathenaChoise,eathenaRepet, eathenaMessage,eathenaBoolean,eathenaFunctions,eathenaCurlyBlock,eathenaVariable        
 "-----------------------------------------------------------------------------------------------------------------------
+"
+
 "Comment
 syn region  scriptComment     start="//" end="$" contains=TODO,FIXME
 
@@ -44,13 +45,13 @@ syn match scriptFloat	"\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<\%(0\|[1-9]\d*\%(_\d\+\
 
 "Label
 syn match scriptLabels "[A-z]\+[0-9]*\:$"
-syn match scriptTimeLabels "[A-z]\+[0-9]\{1,2}\:$"
+syn match scriptTimeLabels "^[A-z]\+[0-9]\{1,6}\:"
 syn keyword scriptSpecialLabels OnInit: OnInterIfInit: OnInterIfInitOnce: OnAgitStart: OnAgitEnd: OnAgitInit: OnAgitEliminate: OnAgitBreak OnPCDieEvent: OnPCKillEvent: OnPCLogoutEvent: OnPCLoginEvent: OnPCLoadMapEvent: OnNPCKillEvent: OnPCBaseUpEvent:
 
 "Town and Fields
-syn keyword scriptTown	prontera prontera izlude moc_ruins geffen payon pay_arche alberta aldebaran yuno lighthalzen einbroch einbech comodo umbala amatsu gonryun ayothaya louyang hugel rachel veins
-syn match scriptFieldsDungeon	"^[a-z]\{1,7}_[a-z0-9]\{1,2}"
-syn match scriptFields	"[a-z]\+_fild[0-9]*"
+syn keyword scriptTown	prontera prontera izlude moc_ruins geffen payon pay_arche alberta aldebaran yuno lighthalzen einbroch einbech comodo umbala amatsu gonryun ayothaya louyang hugel rachel veins morocc airplane airport
+syn match scriptFieldsDungeon	"^[a-z]\{1,7}_[a-z0-9]\{1,7}"
+syn match scriptFields	"[a-z]\+_\(fild\|map\)[0-9]*"
 
 "Messages
 syn keyword scriptMessage mes
@@ -159,3 +160,5 @@ hi def link scriptFunctions               Function
 hi def link scriptCommands                Special
 
 hi def link scriptCondition               Conditional
+
+let b:current_syntax = "eas"
