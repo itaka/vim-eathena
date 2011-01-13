@@ -14,24 +14,24 @@ Authors:
 
 eAthena Script
 
-1  Introduction
-2  Structure
-3  Syntax
-4  Script loading structure
-5  What a RID is and why do you need to know
-6  Item and pet scripts
-7  Numbers
-8  Variables and scope
-9  Arrays
-10 Variable type availability
-11 Special variables
-12 Operators
-13 Labels
-14 Scripting commands and functions
+1.  Introduction
+2.  Structure
+3.  Syntax
+4.  Script loading structure
+5.  What a RID is and why do you need to know
+6.  Item and pet scripts
+7.  Numbers
+8.  Variables and scope
+9.  Arrays
+10. Variable type availability
+11. Special variables
+12. Operators
+13. Labels
+14. Scripting commands and functions
 
 ==============================================================================
 
-1 Introduction                           *introduction* 
+INTRODUCTION                           *ea-introduction* 
 
 This document is a reference manual for all the scripting commands and functions 
 available in current eAthena SVN. It is not a simple tutorial. When people tell 
@@ -61,7 +61,7 @@ A little learning never caused anyone's head to explode.
 
 
 ==============================================================================
-2 Structure                          *structure* 
+STRUCTURE                          *ea-structure* 
 
 The commands and functions are listed in no particular order:
 
@@ -80,7 +80,7 @@ If you find anything omitted, please respond. :)
 
 
 ==============================================================================
-3 Syntax                          *syntax* 
+SYNTAX                          *ea-syntax* 
 
 Throughout this document, wherever a command wants an argument, it is given in 
 <angle brackets>. This doesn't mean you should type the angle brackets. :) If an 
@@ -106,7 +106,7 @@ and not just 'mapname'. While some commands do know that if you didn't give
 
 
 ==============================================================================
-4 Script loading structure                          *script-loading-structure* 
+SCRIPT LOADING STRUCTURE                          *ea-structure* 
 
 Scripts are loaded by the map server as referenced in the 'conf/map_athena.conf' 
 configuration file, but in the default configuration, it doesn't load any script 
@@ -342,7 +342,7 @@ valid and mean what exactly is pending.
 
 
 ==============================================================================
-5 What a RID is and why do you need to know                          *rid* 
+WHAT A RID IS AND WHY DO YOU NEED TO KNOW                          *ea-rid* 
 
 Most scripting commands and functions will want to request data about a 
 character, store variables referenced to that character, send stuff to the 
@@ -366,7 +366,7 @@ attached to the running script.'
 
 
 ==============================================================================
-6 Item and pet scripts                          *item* 
+ITEM AND PET SCRIPTS                          *ea-item* 
 
 Each item in the item database has two special fields - EquipScript and 
 UseScript. The first is script code run every time a character equips the item, 
@@ -391,7 +391,7 @@ pet scripts to work in there reliably.
 
 
 ==============================================================================
-7 Numbers                          *numbers* 
+NUMBERS                          *ea-numbers* 
 
 Beside the common decimal numbers, which are nothing special whatsoever (though 
 do not expect to use fractions, since ALL numbers are integer in this language), 
@@ -404,7 +404,7 @@ This is not used much, but it pays to know about it.
 
 
 ==============================================================================
-8 Variables and scope                          *variables-scope* 
+VARIABLES AND SCOPE                          *ea-variables-scope* 
 
 The meat of every programming language is variables - places where you store 
 data. 
@@ -505,7 +505,7 @@ account data.
 
 
 ==============================================================================
-9 Arrays                          *arrays* 
+ARRAYS                          *ea-arrays* 
 
 Arrays (in eAthena at least) are essentially a set of variables going under the 
 same name. You can tell between the specific variables of an array with an 
@@ -543,7 +543,7 @@ denotes an array index.
 
 
 ==============================================================================
-10 Variable type availability                          *variable-type-availability* 
+VARIABLE TYPE AVAILABILITY                          *ea-variable-type-availability* 
 
 There are some important restrictions on which kinds of variables, depending on 
 their storage location and type, will actually work:
@@ -584,7 +584,7 @@ In short, this means two important things:
 
 
 ==============================================================================
-11 Special variables                          *special-variables* 
+SPECIAL VARIABLES                          *ea-special-variables* 
 
 Only those special variables not related directly to specific script commands 
 are listed here. For a list of those others, see 'getmapxy', 'getinventorylist', 
@@ -602,7 +602,7 @@ CLONE_SKILL     - this permanent character-based variable stores the ID of the
 
 
 ==============================================================================
-12 Operators                          *operators* 
+OPERATORS                          *ea-operators* 
 
 Operators are things you can do to variables and numbers. They are either the 
 common mathematical operations or conditional operators
@@ -665,7 +665,7 @@ Whether '!' works as a binary not operator for numbers has not been tested.
 
 
 ==============================================================================
-13 Labels                          *labels* 
+LABELS                          *ea-labels* 
 
 Within executable script code, some lines can be labels:
 
@@ -781,7 +781,7 @@ manner, but they are described with their associated commands.
 
 
 ==============================================================================
-14 Scripting commands and functions                          *commands-functions* 
+SCRIPTING COMMANDS AND FUNCTIONS                          *ea-commands-functions* 
 
 The commands and functions are listed here in no particular order. There's a 
 difference between commands and functions - commands leave no 'return value' 
@@ -840,7 +840,7 @@ with other command, such as "if", but often used on it's own.
 
 Return to the table of contents
 
-*callfunc "<function>"{,<argument>,...<argument>};
+*callfunc "<function>"{,<argument>,...<argument>};           *ea-callfunc*
 *callfunc("<function>"{,<argument>,...<argument>})
 
 This command lets you call up a function NPC. A function NPC can be called from 
@@ -886,7 +886,7 @@ generally cleaner:
 
 Return to the table of contents
 
-*callsub <label name>{,<argument>,...<argument>};
+*callsub <label name>{,<argument>,...<argument>};                  *ea-callsub*
 
 This command will go to a specified label within the current script (do NOT use 
 quotes around it) coming in as if it were a 'callfunc' call, and pass it 
@@ -913,14 +913,14 @@ call a function NPC object instead, or use a variable.
            
 Return to the table of contents
 
-*return {(<value>)};
+*return {(<value>)};                                   *ea-return*
 
 When you use callsub or callfunc, this command allows you to go back to the 
 calling script. You can optionally return with a value telling the calling 
 program what exactly happened. To get at this value, you will have to use the 
 'set' command:
 
-    set <variable>,callfunc "<your function>"
+    set <variable>,callfunc "<your function>"            *ea-set*
 
 Note the round brackets. Turns out you have to enclose just about anything in 
 brackets if it isn't a straight number for the return command to work with it:
@@ -938,7 +938,7 @@ For an example see 'callfunc' and 'callsub'
 
 Return to the table of contents
 
-*getarg(<number>)
+*getarg(<number>)                                          *ea-getarg*
 
 This function is used when you use the 'callsub' or 'callfunc' commands. In the 
 call you can specify variables that will make that call different from another 
@@ -1003,7 +1003,7 @@ within other functions. (Return values mess up the stack.)
 
 Return to the table of contents
 
-*next;
+*next;                                        *ea-next*
 
 This command will create a 'next' button in the message window for the invoking 
 character. If no window is currently on screen, it will be created. Used to 
@@ -1018,7 +1018,7 @@ segment NPC talking, this command is used A LOT. See 'mes'.
 
 Return to the table of contents
 
-*close;
+*close;                   *ea-close*
 
 This command will create a 'close' button in the message window for the invoking 
 character. If no window is currently on screen, it will be created. This is one 
@@ -1032,7 +1032,7 @@ script execution will end, and the message box will disappear.
 
 Return to the table of contents
 
-*close2;
+*close2;                   *ea-close2*
 
 This command will create a 'close' button in the message window for the invoking 
 character. If no window is currently on screen, it will be created. See 'close'. 
@@ -1052,7 +1052,7 @@ Don't expect things to run smoothly if you don't make your scripts 'end' or
 
 Return to the table of contents
 
-*menu "<menu option>",<label>{,"<menu option>",<label>...};
+*menu "<menu option>",<label>{,"<menu option>",<label>...};    *ea-menu*
 
 This command will create a selectable menu for the invoking character. Only one 
 menu can be on screen at the same time.
@@ -1188,7 +1188,7 @@ perfectly equivalent.
 
 Return to the table of contents
 
-*rand(<number>{,<number>});
+*rand(<number>{,<number>});    *ea-rand*
 
 This function returns a number, randomly positioned between 0 and the number you 
 specify (if you only specify one) and the two numbers you specify if you give it 
@@ -1200,7 +1200,7 @@ rand(2,10) would result in 2,3,4,5,6,7,8,9 or 10
 
 Return to the table of contents
 
-*warp "<map name>",<x>,<y>;
+*warp "<map name>",<x>,<y>;    *ea-warp*
 
 This command will take the invoking character to the specifed map, and if 
 wanted, specified coordinates too, but these can be random.
@@ -1225,7 +1225,7 @@ There are also three special 'map names' you can use.
 
 Return to the table of contents
 
-*areawarp "<from map name>",<x1>,<y1>,<x2>,<y2>,"<to map name>",<x3>,<y3>;
+*areawarp "<from map name>",<x1>,<y1>,<x2>,<y2>,"<to map name>",<x3>,<y3>;    *ea-areawarp*
 
 This command is similar to 'warp', however, it will not refer to the invoking 
 character, but instead, all characters within a specified area, defined by the 
@@ -1250,7 +1250,7 @@ See also 'warp'.
 
 Return to the table of contents
 
-*heal <hp>,<sp>;
+*heal <hp>,<sp>;    *ea-heal*
 
 This command will heal a set amount of HP and/or SP on the invoking character.
 
@@ -1263,7 +1263,7 @@ character and produces no other output whatsoever.
 
 Return to the table of contents
 
-*itemheal <hp>,<sp>;
+*itemheal <hp>,<sp>;    *ea-itemheal*
 
 This command works on the invoking character like 'heal', however, it is not 
 normally used in NPC scripts and will not work as expected there, but is used 
@@ -1283,7 +1283,7 @@ a random ammount of healing.
 
 Return to the table of contents
 
-*percentheal <hp>,<sp>;
+*percentheal <hp>,<sp>;    *ea-percentheal*
 
 This command will heal the invoking character. It heals the character, but not 
 by a set value - it adds percent of their maximum HP/SP.
@@ -1297,7 +1297,7 @@ you have maximum. Like 'heal', this will not call up any animations or effects.
 
 Return to the table of contents
 
-*jobchange <job number>{,<upper flag>};
+*jobchange <job number>{,<upper flag>};    *ea-jobchange*
 
 This command will change the job class of the invoking character.
 
@@ -1323,7 +1323,7 @@ changing jobs, which can be checked for later in scripts.
 
 Return to the table of contents
 
-*input <variable>;
+*input <variable>;    *ea-input*
 
 This command will make an input box pop up on the client connected to the 
 invoking character, to allow entering of a number or a string. This has many 
@@ -1374,7 +1374,7 @@ can't use it item scripts.
 
 Return to the table of contents
 
-*setlook <look type>,<look value>;
+*setlook <look type>,<look value>;    *ea-setlook*
 
 This command will alter the look data for the invoking character. It is used 
 mainly for changing the palette used on hair and clothes, you specify which look 
@@ -1427,7 +1427,7 @@ you can look at, this may help you create a Stylist of your own:
 
 Return to the table of contents
 
-*set <variable>,<expression>;
+*set <variable>,<expression>;    *ea-set*
 
 This command will set a variable to the value that the expression results in. 
 This is the only way to set a variable directly.
@@ -1446,7 +1446,7 @@ integer in this language) and make @x equal it.
 
 Return to the table of contents
 
-*setarray <array name>[<first value>],<value>{,<value>...<value>};
+*setarray <array name>[<first value>],<value>{,<value>...<value>};    *ea-setarray*
 
 This command will allow you to quickly fill up an array in one go. Check the 
 Kafra scripts in the distribution to see this used a lot.
@@ -1467,7 +1467,7 @@ will produce:
 
 Return to the table of contents
 
-*cleararray <array name>[<first value to alter>],<value>,<number of values to set>;
+*cleararray <array name>[<first value to alter>],<value>,<number of values to set>;    *ea-cleararray*
 
 This command will change many array values at the same time to the same value.
 
@@ -1483,7 +1483,7 @@ See 'setarray'.
 
 Return to the table of contents
 
-*copyarray <to array>[<first value>],<from array>[<first value>],<amount to copy>;
+*copyarray <to array>[<first value>],<from array>[<first value>],<amount to copy>;    *ea-copyarray*
 
 This command lets you quickly shuffle a lot of data between arrays, which is in 
 some cases invaluable.
@@ -1513,7 +1513,7 @@ Notice that @array[5] wont be coppied to the second array, and it will return a
 
 Return to the table of contents
 
-*getarraysize(<array name>);
+*getarraysize(<array name>);    *ea-getarraysize*
 
 This function returns the number of values that are contained inside the 
 specified array. Notice that zeros and empty strings at the end of this array 
@@ -1533,7 +1533,7 @@ This will make @arraysize == 6. But if you try this:
 
 Return to the table of contents
 
-*deletearray <array name>[<first value>],<how much to delete>
+*deletearray <array name>[<first value>],<how much to delete>    *ea-deletearray*
 
 This command will delete a specified number of array elements totally from an 
 array, shifting all the elements beyond this towards the beginning.
@@ -1554,7 +1554,7 @@ memory entirely. This would be very handy, if it always worked.
 
 Return to the table of contents
 
-*getelementofarray(<array name>,<index>);
+*getelementofarray(<array name>,<index>);    *ea-getelementofarray*
 
 This function will return an array's element when given an index.
 
@@ -1569,7 +1569,7 @@ which has the same effect.
 
 Return to the table of contents
 
-*if (<condition>) <statement>;
+*if (<condition>) <statement>;    *ea-if*
 
 This is the basic conditional statement command, and just about the only one 
 available in this scripting language. 
@@ -1679,8 +1679,8 @@ Example 6: Using complex conditions.
 
 Return to the table of contents
 
-*getitem <item id>,<amount>{,<character ID>};
-*getitem "<item name>",<amount>{,<character ID>};
+*getitem <item id>,<amount>{,<character ID>};    *ea-getitem*
+*getitem "<item name>",<amount>{,<character ID>};    *ea-getitem*
 
 This command will give a specific amount of specified items to the invoking 
 character. If an optional character ID is specified, and that character is 
@@ -1722,8 +1722,8 @@ few item scripts. For more examples check just about any official script.
 
 Return to the table of contents
 
-*getitem2 <item id>,<amount>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<character ID>};
-*getitem2 "<Item name>",<amount>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<character ID>};
+*getitem2 <item id>,<amount>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<character ID>};    *ea-getitem2*
+*getitem2 "<Item name>",<amount>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<character ID>};    *ea-getitem2*
 
 This command will give an amount of specified items to the invoking character. 
 If an optional character ID is specified, and that character is currently 
@@ -1822,8 +1822,8 @@ this really cause.
 
 Return to the table of contents
 
-*makeitem <item id>,<amount>,<X>,<Y>,"<map name>";
-*makeitem "<item name>",<amount>,<X>,<Y>,"<map name>";
+*makeitem <item id>,<amount>,<X>,<Y>,"<map name>";    *ea-makeitem*
+*makeitem "<item name>",<amount>,<X>,<Y>,"<map name>";    *ea-makeitem*
 
 This command will create an item lying around on a specified map in the 
 specified location.
@@ -1840,8 +1840,8 @@ the name isn't found.
 
 Return to the table of contents
 
-*delitem <item id>,<amount>;
-*delitem "<item name>",<amount>;
+*delitem <item id>,<amount>;    *ea-delitem*
+*delitem "<item name>",<amount>;    *ea-delitem*
 
 This command will take a specified amount of items from the invoking character. 
 As all the item commands, this one uses the ID of the item found inside 
@@ -1862,7 +1862,7 @@ database. If the name is not found, nothing will be deleted.
 
 Return to the table of contents
 
-*viewpoint <action>,<x>,<y>,<point number>,<color>;
+*viewpoint <action>,<x>,<y>,<point number>,<color>;    *ea-viewpoint*
 
 This command will mark places on the mini map in the client connected to the 
 invoking character. It uses the normal X and Y coordinates from the main map. 
@@ -1897,8 +1897,8 @@ memory of where the points are set whatsoever.
 
 Return to the table of contents
 
-*countitem(<item id>)
-*countitem("<item name>")
+*countitem(<item id>)    *ea-countitem*
+*countitem("<item name>")    *ea-countitem*
 
 This function will return the number of items for the specified item ID that the 
 invoking character has in their inventory.
@@ -1919,8 +1919,8 @@ adding up strings:
     
 Return to the table of contents
 
-*checkweight(<item id>,<amount>)
-*checkweight("<item name>",<amount>)
+*checkweight(<item id>,<amount>)    *ea-checkweight*
+*checkweight("<item name>",<amount>)    *ea-checkweight*
 
 This function will compute and return 1 if the total weight of a specified 
 number of specific items does not exceed the invoking character's carrying 
@@ -1953,7 +1953,7 @@ Both these examples have the same effect.
 
 Return to the table of contents
 
-*readparam(<parameter number>)
+*readparam(<parameter number>)    *ea-readparam*
 
 This function will return the basic stats of an invoking character, referred to 
 by the parameter number. Instead of a number, you can use a parameter name if it 
@@ -1991,7 +1991,7 @@ L_End:
 
 Return to the table of contents
 
-*getcharid(<type>{,"<character name>"})
+*getcharid(<type>{,"<character name>"})    *ea-getcharid*
 
 This function will return a unique ID number of the invoking character, or, if a 
 character name is specified, of that character.
@@ -2019,7 +2019,7 @@ If the character stated isnt online any number returned with be -1
 
 Return to the table of contents
 
-*getpartyname(<party id>)
+*getpartyname(<party id>)    *ea-getpartyname*
 
 This function will return the name of a party that has the specified ID number. 
 If there is no such party ID, "null" will be returned.
@@ -2031,7 +2031,7 @@ Lets say the ID of a party was saved as a global variable:
 
 Return to the table of contents
 
-*getpartymember <party id>;
+*getpartymember <party id>;    *ea-getpartymember*
 
 Thank you to HappyDenn for all this information.
 
@@ -2084,7 +2084,7 @@ Example:
 
 Return to the table of contents
 
-*getguildname(<guild id>)
+*getguildname(<guild id>)    *ea-getguildname*
 
 This function returns a guild's name given an ID number. If there is no such 
 guild, "null" will be returned;
@@ -2101,7 +2101,7 @@ guild-based event.
 
 Return to the table of contents
 
-*getguildmaster(<guild id>)
+*getguildmaster(<guild id>)    *ea-getguildmaster*
 
 This function return the name of the master of the guild which has the specified 
 ID number. If there is no such guild, "null" will be returned.
@@ -2129,14 +2129,14 @@ Maybe you want to make a room only guildmasters can enter:
 
 Return to the table of contents
 
-*getguildmasterid(<guild id>)
+*getguildmasterid(<guild id>)    *ea-getguildmasterid*
 
 This function will return the character ID number of the guildmaster of the 
 guild specified by the ID. 0 if the character is not a guildmaster of any guild.
 
 Return to the table of contents
 
-*strcharinfo(<type>)
+*strcharinfo(<type>)    *ea-strcharinfo*
 
 This function will return either the name, party name or guild name for the 
 invoking character. Whatever it returns is determined by type.
@@ -2150,7 +2150,7 @@ returned when requesting that information.
 
 Return to the table of contents
 
-*getequipid(<equipment slot>)
+*getequipid(<equipment slot>)    *ea-getequipid*
 
 This function returns the item ID of the item equipped in the equipment slot 
 specified on the invoking character. If nothing is equpped there, it returns 0. 
@@ -2201,7 +2201,7 @@ armor, but also dont want them to equip if after the check, you would do this:
 
 Return to the table of contents
 
-*getequipname(<equpment slot>)
+*getequipname(<equpment slot>)    *ea-getequipname*
 
 This function will return the name of the item equipped in the specified 
 equipment slot on the invoking character. Almost identical to 'getequipid', good 
@@ -2217,7 +2217,7 @@ See 'getequipid' for a full list of valid equipment slots.
 
 Return to the table of contents
 
-*getbrokenid(<number>)
+*getbrokenid(<number>)    *ea-getbrokenid*
 
 This function will search the invoking character's inventory for any broken 
 items, and will return their item ID numbers. Since the character may have 
@@ -2233,7 +2233,7 @@ will return the second one, etc. Will return 0 if no such item is found.
 
 Return to the table of contents
 
-*repair <broken item number>;
+*repair <broken item number>;    *ea-repair*
 
 This command repairs a broken peice of equipment, using the same list of broken 
 items as available through 'getbrokenid'.
@@ -2244,7 +2244,7 @@ who made it, can answer why is it so.
 
 Return to the table of contents
 
-*getequipisequiped(<item id>)
+*getequipisequiped(<item id>)    *ea-getequipisequiped*
 
 This functions will return 1 if the equipment specified with the ID number is 
 equipped on the invoking character and 0 if it isn't:
@@ -2258,7 +2258,7 @@ piece of equipment:
 
 Return to the table of contents
 
-*getequipisenableref(<equipment slot>)
+*getequipisenableref(<equipment slot>)    *ea-getequipisenableref*
 
 Will return 1 if the item equipped on the invoking character in the specified 
 equipment slot is refinable, and 0 if it isn't. For a list of equipment slots 
@@ -2275,7 +2275,7 @@ see 'getequipid'.
 
 Return to the table of contents
 
-*getequipisidentify(<equipment slot>)
+*getequipisidentify(<equipment slot>)    *ea-getequipisidentify*
 
 This function will return 1 if an item in the specified equipment slot is 
 identified and 0 if it isn't. Since you can't even equip unidentified equipment, 
@@ -2286,7 +2286,7 @@ For a list of equipment slots see 'getequipid'.
 
 Return to the table of contents
 
-*getequiprefinerycnt(<equipment slot>)
+*getequiprefinerycnt(<equipment slot>)    *ea-getequiprefinerycnt*
 
 Returns the current number of plusses for the item in the specified equipment 
 slot. For a list of equipment slots see 'getequipid'.
@@ -2302,7 +2302,7 @@ this is +10:
 
 Return to the table of contents
 
-*getequipweaponlv(<equipment slot>)
+*getequipweaponlv(<equipment slot>)    *ea-getequipweaponlv*
 
 This function returns the weapon level for the weapon equipped in the specified 
 equipment slot on the invoking character. For a list of equipment slots see 
@@ -2337,7 +2337,7 @@ Or for the left hand, cause it can hold a weapon or a shield:
 
 Return to the table of contents
 
-*getequippercentrefinery(<equipment slot>)
+*getequippercentrefinery(<equipment slot>)    *ea-getequippercentrefinery*
 
 This function calculates and returns the percent value chance to successfully 
 refine the item found in the specified equipment slot of the invoking character 
@@ -2356,7 +2356,7 @@ random change of a refine succeeding or failing and then going through with it
 
 Return to the table of contents
 
-*successrefitem <equipment slot>;
+*successrefitem <equipment slot>;    *ea-successrefitem*
 
 This command will refine an item in the specified equipment slot of the invoking 
 character by +1. For a list of equipment slots see 'getequipid'. This command 
@@ -2371,7 +2371,7 @@ This is since jAthena, so probably nobody knows for sure why is it so.
 
 Return to the table of contents
 
-*failedrefitem <equipment slot>;
+*failedrefitem <equipment slot>;    *ea-failedrefitem*
 
 This command will fail to refine an item in the specified equipment slot of the 
 invoking character. The item will be destroyed. This will also display a 'refine 
@@ -2385,7 +2385,7 @@ since jAthena, so probably nobody knows for sure why is it so.
 
 Return to the table of contents
 
-*cutin "<filename with no extension>",<position>;
+*cutin "<filename with no extension>",<position>;    *ea-cutin*
 
 This command will display a picture stored in the GRF file in the client for the 
 player. 
@@ -2448,7 +2448,7 @@ kafra_07    - Do I need to mention this one again ;)
 
 Return to the table of contents
 
-*cutincard <item id>;
+*cutincard <item id>;    *ea-cutincard*
 
 This command will display a card picture as a cutin on the client connected to 
 the invoking character, with position number 4 (middle of screen, movable, but 
@@ -2463,7 +2463,7 @@ command probably won't work.
 
 Return to the table of contents
 
-*statusup <stat>;
+*statusup <stat>;    *ea-statusup*
 
 This command will bump a specified stat of the invoking character up by one 
 permanently. Stats are to be given as number, but you can use these constants to 
@@ -2478,7 +2478,7 @@ bLuk -  Luck
 
 Return to the table of contents
 
-*statusup2 <stat>,<amount>;
+*statusup2 <stat>,<amount>;    *ea-statusup2*
 
 This command will bump a specified stat of the invoking character up by the 
 specified amount permanently. The amount can be negative. See 'statusup'.
@@ -2488,10 +2488,10 @@ specified amount permanently. The amount can be negative. See 'statusup'.
 
 Return to the table of contents
 
-*bonus <bonus type>,<amount>;
-*bonus2 <bonus type>,<amount>;
-*bonus3 <bonus type>,<amount>;
-*bonus4 <bonus type>,<amount>;
+*bonus <bonus type>,<amount>;    *ea-bonus*
+*bonus2 <bonus type>,<amount>;    *ea-bonus2*
+*bonus3 <bonus type>,<amount>;    *ea-bonus3*
+*bonus4 <bonus type>,<amount>;    *ea-bonus4*
 
 These commands are meant to be used in item scripts. They will probably work 
 outside item scripts, but the bonus will not persist for long. They, as 
@@ -2502,8 +2502,8 @@ kind in 'doc/item_bonus.txt'.
 
 Return to the table of contents
 
-*skill <skill id>,<level>{,<flag>};
-*addtoskill <skill id>,<level>{,<flag>}
+*skill <skill id>,<level>{,<flag>};    *ea-skill*
+*addtoskill <skill id>,<level>{,<flag>}    *ea-addtoskill*
 
 These commands will give the invoking character a specified skill. This is also 
 used for item scripts.
@@ -2528,7 +2528,7 @@ previously, they will now at 0+the level given.
 
 Return to the table of contents
 
-*guildskill <skill id>,<level>{,<flag>}
+*guildskill <skill id>,<level>{,<flag>}    *ea-guildskill*
 
 This command will bump up the specified guild skill by the specified number of 
 levels. This refers to the invoking character and will only work if the invoking 
@@ -2555,7 +2555,7 @@ a fun quest. (Wasting a level point on that is really annoying :D)
 
 Return to the table of contents
 
-*getskilllv(<skill id>)
+*getskilllv(<skill id>)    *ea-getskilllv*
 
 This function returns the level of the specified skill that the invoking 
 character has. If they don't have the skill, 0 will be returned. The full list 
@@ -2588,14 +2588,14 @@ Example 2:
 
 Return to the table of contents
 
-*getgdskilllv(<guild id>,<skill id>)
+*getgdskilllv(<guild id>,<skill id>)    *ea-getgdskilllv*
 
 This function retirns the guild skills for the guild with a specified ID exactly 
 as 'getskilllv' does.
 
 Return to the table of contents
 
-*basicskillcheck()
+*basicskillcheck()    *ea-basicskillcheck*
 
 This function will return the state of the configuration option 
 'basic_skill_check' in 'battle_athena.conf'. It returns 1 if the option is 
@@ -2607,7 +2607,7 @@ things might in some cases be required.
 
 Return to the table of contents
 
-*getgmlevel()
+*getgmlevel()    *ea-getgmlevel*
 
 This function will return the GM level of the account to which the invoking 
 character belongs. If this is somehow executed from a console command, 99 will 
@@ -2629,8 +2629,8 @@ only acessable by GM level 50 and over
 
 Return to the table of contents
 
-*end;
-*break;
+*end;                       *ea-end**ea-end*
+*break;                       *ea-break**ea-break*
 
 This command will stop the execution for this particular script. The two 
 versions are prefectly equivalent. It is the normal way to end a script which 
@@ -2662,10 +2662,10 @@ of 'end' stops this, and ends the script.
 
 Return to the table of contents
 
-*checkoption(<option number>)
-*checkoption1(<option number>)
-*checkoption2(<option number>)
-*setoption <option number>;
+*checkoption(<option number>)    *ea-checkoption*
+*checkoption1(<option number>)    *ea-checkoption1*
+*checkoption2(<option number>)    *ea-checkoption2*
+*setoption <option number>;    *ea-setoption*
 
 The 'setoption' series of functions check for a so-called option that is set on 
 the invoking character. 'Options' are used to store status conditions and a lot 
@@ -2717,8 +2717,8 @@ core developer for the full list.
 
 Return to the table of contents
 
-*setcart;
-*checkcart()
+*setcart;    *ea-setcart*
+*checkcart()    *ea-checkcart*
 
 This command will give the invoking character a cart. The cart given will be 
 cart number 1 and will work regardless of whether the character is a merchant 
@@ -2731,8 +2731,8 @@ The accompanying function will return 1 if the invoking character has a cart
 
 Return to the table of contents
 
-*setfalcon;
-*checkfalcon()
+*setfalcon;    *ea-setfalcon*
+*checkfalcon()    *ea-checkfalcon*
 
 This command will give the invoking character a falcon. The falcon will be there 
 regardless of whether the character is a hunter or not. It will (probably) not 
@@ -2745,8 +2745,8 @@ and 0 if they don't.
 
 Return to the table of contents
 
-*setriding;
-*checkriding()
+*setriding;    *ea-setriding*
+*checkriding()    *ea-checkriding*
 
 This command will give the invoking character a PecoPeco (if they are a Knight 
 series class) or a GrandPeco (if they are a Crusader seriesclass). Unlike 
@@ -2761,8 +2761,8 @@ bird and 0 if they don't.
 
 Return to the table of contents
 
-*savepoint "<map name>",<x>,<y>;
-*save "<map name>",<x>,<y>;
+*savepoint "<map name>",<x>,<y>;    *ea-savepoint*
+*save "<map name>",<x>,<y>;    *ea-save*
 
 This command saves a point that the invoking character will return to upon 
 'return to save point' if dead or in some other cases. The two versions are 
@@ -2774,7 +2774,7 @@ teleportation is otherwise possible.
 
 Return to the table of contents
 
-*gettimetick(<tick type>)
+*gettimetick(<tick type>)    *ea-gettimetick*
 
 This function will return the system time in UNIX epoch time (if tick type is 0) 
 or the time since the start of the current day in seconds if tick type is 1.
@@ -2786,7 +2786,7 @@ you to make an 'online time counted for conviction only' jail script.
 
 Return to the table of contents
 
-*gettime(<type>)
+*gettime(<type>)    *ea-gettime*
 
 This function will return specified information about the current system time.
 
@@ -2804,7 +2804,7 @@ It will only return numbers.
 
 Return to the table of contents
 
-*gettimestr(<format string>,<max length>)
+*gettimestr(<format string>,<max length>)    *ea-gettimestr*
 
 This function will return a string containing time data as specified by the 
 format string.
@@ -2823,7 +2823,7 @@ This will print a full date and time like 'YYYY-MM/DD HH:MM:SS'.
 
 Return to the table of contents
 
-*openstorage;
+*openstorage;    *ea-openstorage*
 
 This will open a character's Kafra storage window on the client connected to the 
 invoking character. It does not check wherever it is run from, so you can allow 
@@ -2841,7 +2841,7 @@ before you open storage.
 
 Return to the table of contents
 
-*guildopenstorage()
+*guildopenstorage()    *ea-guildopenstorage*
 
 This function works the same as 'openstorage' but will open a guild storage 
 window instead for the guild storage of the guild the invoking character belongs 
@@ -2854,7 +2854,7 @@ This will also fail and return 2 if the character does not belong to any guild.
 
 Return to the table of contents
 
-*itemskill <skill id>,<skill level>,"<skill name to show>";
+*itemskill <skill id>,<skill level>,"<skill name to show>";    *ea-itemskill*
 
 This is a command meant for item scripts to replicate single-use skills. It will 
 not work properly in NPC scripts a lot of the time because casting a skill is 
@@ -2869,7 +2869,7 @@ just fine and will even show a targeting pointer if this is a targeting skill.
 
 Return to the table of contents
 
-*produce <item level>;
+*produce <item level>;    *ea-produce*
 
 This command will open a crafting window on the client connected to the invoking 
 character. The 'item level' is a number which determines what kind of a crafting 
@@ -2891,8 +2891,8 @@ Valid item levels are:
 
 Return to the table of contents
 
-*monster "<map name>",<x>,<y>,"<name to show>",<mob id>,<amount>{,"<event label>"};
-*areamonster "<map name>",<x1>,<y1>,<x2>,<y2>,"<monster name>",<amount>{,"<event label>"};
+*monster "<map name>",<x>,<y>,"<name to show>",<mob id>,<amount>{,"<event label>"};    *ea-monster*
+*areamonster "<map name>",<x1>,<y1>,<x2>,<y2>,"<monster name>",<amount>{,"<event label>"};    *ea-areamonster*
 
 This command will spawn a monster on the specified coordinates on the specified 
 map. If the script is invoked by a character, a special map name, "this", will 
@@ -2958,7 +2958,7 @@ For more good examples see just about any official 2-1 or 2-2 job quest script.
 
 Return to the table of contents
 
-*killmonster "<map name>","<event label>";
+*killmonster "<map name>","<event label>";    *ea-killmonster*
 
 This command will kill all monsters that were spawned with 'monster' or 
 'areamonster' and have a specified event label attached to them. Commonly used 
@@ -2972,14 +2972,14 @@ of the event label value.
 
 Return to the table of contents
 
-*killmonsterall "<map name>";
+*killmonsterall "<map name>";    *ea-killmonsterall*
 
 This command will kill all monsters on a specified map name, regardless of how 
 they were spawned or what they are.
 
 Return to the table of contents
 
-*doevent "<NPC object name>::<event label>";
+*doevent "<NPC object name>    *ea-doevent*::<event label>";
 
 This command will start a new execution thread in a specified NPC object at the 
 specified label. The execution of the script running this command will not stop. 
@@ -3002,7 +3002,7 @@ invoked by the RID that was active in the script that issued a 'doevent'.
 
 Return to the table of contents
 
-*donpcevent "<event label>";
+*donpcevent "<event label>";    *ea-donpcevent*
 
 This command is kinda confusing cause it performs in two completely different 
 ways.
@@ -3045,9 +3045,9 @@ emotion will appear above each of their heads.
 
 Return to the table of contents
 
-*addtimer <ticks>,"<NPC object name>::<label>";
-*deltimer "<NPC object name>::<event label>";
-*addtimercount <ticks>,"<NPC object name>::<event label>";
+*addtimer <ticks>,"<NPC object name>    *ea-addtimer*::<label>";
+*deltimer "<NPC object name>    *ea-deltimer*::<event label>";
+*addtimercount <ticks>,"<NPC object name>    *ea-addtimercount*::<event label>";
 
 These commands will create, destroy, and delay a countdown timer - 'addtimer' to 
 create, 'deltimer' to destroy and 'addtimercount' to delay it by the specified 
@@ -3063,11 +3063,11 @@ The ticks are given in 1/1000ths of a second.
 
 Return to the table of contents
 
-*stoptimer;
-*inittimer;
-*enablearena;
-*disablearena;
-*cmdothernpc "<npc name?>","<command?>";
+*stoptimer;    *ea-stoptimer*
+*inittimer;    *ea-inittimer*
+*enablearena;    *ea-enablearena*
+*disablearena;    *ea-disablearena*
+*cmdothernpc "<npc name    *ea-cmdothernpc*?>","<command?>";
 
 This set of commands is marked as added by someone going under the nickname 
 'RoVeRT', as mentioned the source code comments, and has to do with timers and 
@@ -3087,13 +3087,13 @@ is.
 
 Return to the table of contents
 
-*initnpctimer{ "<NPC object name>"};
-*stopnpctimer{ "<NPC object name>"};
-*startnpctimer{ "<NPC object name>"};
-*setnpctimer <tick>{,"<NPC object name>"};
-*getnpctimer(<type of information>{,"<NPC object name>"});
-*attachnpctimer {"<character name>"};
-*detachnpctimer {"<NPC object name>"};
+*initnpctimer{ "<NPC object name>"};    *ea-initnpctimer*
+*stopnpctimer{ "<NPC object name>"};    *ea-stopnpctimer*
+*startnpctimer{ "<NPC object name>"};    *ea-startnpctimer*
+*setnpctimer <tick>{,"<NPC object name>"};    *ea-setnpctimer*
+*getnpctimer(<type of information>{,"<NPC object name>"});    *ea-getnpctimer*
+*attachnpctimer {"<character name>"};    *ea-attachnpctimer*
+*detachnpctimer {"<NPC object name>"};    *ea-detachnpctimer*
 
 This set of commands and functions will create and manage an NPC-object based 
 timer. The NPC object may be declared by name, or the name in all cases may be 
@@ -3222,8 +3222,8 @@ Example 4:
 
 Return to the table of contents
 
-*announce "<text>",<flag>
-*mapannounce "<map name>","<text>",<flag>;
+*announce "<text>",<flag>    *ea-announce*
+*mapannounce "<map name>","<text>",<flag>;    *ea-mapannounce*
 
 This command will broadcast a message to all or most players, similar to 
 @kami/@kamib GM commands.
@@ -3262,7 +3262,7 @@ actually work correctly.
 
 Return to the table of contents
 
-*areaannounce "<map name>",<x1>,<y1>,<x2>,<y2>,"<text>",<flag>;
+*areaannounce "<map name>",<x1>,<y1>,<x2>,<y2>,"<text>",<flag>;    *ea-areaannounce*
 
 This command works like 'announce' but will only broadcast to characters 
 residing in the specified x1/y1-x2/y2 square on the map given. The flags are 
@@ -3273,7 +3273,7 @@ actually work correctly.
 
 Return to the table of contents
 
-*getusers(<type>)
+*getusers(<type>)    *ea-getusers*
 
 This function will return a number of users on a map or the whole server. What 
 it returns is specified by Type.
@@ -3290,7 +3290,7 @@ invoking character, while 'getusers(7)' will give the count for entire server.
 
 Return to the table of contents
 
-*getmapusers("<map name>")
+*getmapusers("<map name>")    *ea-getmapusers*
 
 This function will return the number of users currently located on the specified 
 map.
@@ -3301,7 +3301,7 @@ enter.
 
 Return to the table of contents
 
-*getareausers("<map name>",<x1>,<y1>,<x2>,<y2>)
+*getareausers("<map name>",<x1>,<y1>,<x2>,<y2>)    *ea-getareausers*
 
 This function will return the count of connected characters which are located 
 within the specified area - an x1/y1-x2/y2 square on the specified map.
@@ -3311,7 +3311,7 @@ This is useful for maps that are split into many buildings, such as all the
 
 Return to the table of contents
 
-*getareadropitem("<map name>",<x1>,<y1>,<x2>,<y2>,<item>)
+*getareadropitem("<map name>",<x1>,<y1>,<x2>,<y2>,<item>)    *ea-getareadropitem*
 
 This function will count all the items with the specified ID number lying on the 
 ground on the specified map within the x1/y1-x2/y2 square on it and return that 
@@ -3325,8 +3325,8 @@ isn't found from the item database, it will count items number '512' (apples).
 
 Return to the table of contents
 
-*disablenpc "<NPC object name>";
-*enablenpc "<NPC object name>";
+*disablenpc "<NPC object name>";    *ea-disablenpc*
+*enablenpc "<NPC object name>";    *ea-enablenpc*
 
 These two commands will disable and enable, respectively, an NPC object 
 specified by name. The disabled NPC will disappear from sight and will no longer 
@@ -3343,8 +3343,8 @@ copies, and then disable all except one.
 
 Return to the table of contents
 
-*hideonnpc "<NPC object name>";
-*hideoffnpc "<NPC object name>";
+*hideonnpc "<NPC object name>";    *ea-hideonnpc*
+*hideoffnpc "<NPC object name>";    *ea-hideoffnpc*
 
 These commands will make the NPC object specified display as hidden/visible, 
 even though not actually disabled per se. Hidden as in thief Hide skill, (this 
@@ -3357,9 +3357,9 @@ sprite location and other accompanying data from memory when it is not used.
 
 Return to the table of contents
 
-*sc_start <effect type>,<ticks>,<extra argument>{,<target ID number>};
-*sc_start2 <effect type>,<ticks>,<extra argument>,<percent chance>{,<target ID number>};
-*sc_end <effect type>{,<target ID number>};
+*sc_start <effect type>,<ticks>,<extra argument>{,<target ID number>};    *ea-sc_start*
+*sc_start2 <effect type>,<ticks>,<extra argument>,<percent chance>{,<target ID number>};    *ea-sc_start2*
+*sc_end <effect type>{,<target ID number>};    *ea-sc_end*
 
 These command bestow a status effect on the invoking character. This command is 
 used a lot in the item scripts.
@@ -3396,7 +3396,7 @@ should be rather obvious.
 
 Return to the table of contents
 
-*getscrate(<effect type>,<base rate>{,<target ID number>})
+*getscrate(<effect type>,<base rate>{,<target ID number>})    *ea-getscrate*
 
 This function will return the chance of a status effect affecting the invoking 
 character, in percent, modified by the their current defense against said 
@@ -3413,7 +3413,7 @@ currently work due to a bug.
 
 Return to the table of contents
 
-*debugmes "<message>";
+*debugmes "<message>";    *ea-debugmes*
 
 This command will send the message to the server console (map-server window). It 
 will not be displayed anywhere else.
@@ -3424,7 +3424,7 @@ will not be displayed anywhere else.
 
 Return to the table of contents
 
-*pet <pet id>;
+*pet <pet id>;    *ea-pet*
 
 This command is used in all the item scripts for taming items. Running this 
 command will make the pet catching cursor appear on the client connected to the 
@@ -3435,7 +3435,7 @@ A full list of pet IDs can be found inside 'db/pet_db.txt'
 
 Return to the table of contents
 
-*bpet;
+*bpet;    *ea-bpet*
 
 This command opens up a pet hatching window on the client connected to the 
 invoking character. It is used in item script for the pet incubators and will 
@@ -3445,7 +3445,7 @@ This is still usable outside item scripts.
 
 Return to the table of contents
 
-*resetlvl <action type>;
+*resetlvl <action type>;    *ea-resetlvl*
 
 This is a character reset command, meant mostly for rebirth script supporting 
 Advanced jobs, which will reset the invoking character's stats and level 
@@ -3466,7 +3466,7 @@ rebirth scripts. Ask AppleGirl why.
 
 Return to the table of contents
 
-*resetstatus;
+*resetstatus;    *ea-resetstatus*
 
 This is a character reset command, which will reset the stats on the invoking 
 character and give back all the stat points used to raise them previously. 
@@ -3476,7 +3476,7 @@ Used in reset NPC's (duh!)
 
 Return to the table of contents
 
-*resetskill;
+*resetskill;    *ea-resetskill*
 
 This command takes off all the skill points on the invoking character, so they 
 only have Basic Skill blanked out (lvl 0) left, and returns the points for them 
@@ -3489,7 +3489,7 @@ Used in reset NPC's (duh!)
 
 Return to the table of contents
 
-*changebase <job ID number>;
+*changebase <job ID number>;    *ea-changebase*
 
 This will change the appearance of the invoking character to that of a specified 
 job class. Nothing but appearance will change. This command is used in item 
@@ -3504,7 +3504,7 @@ This command only works when inside item scripts, though it's not certain why.
 
 Return to the table of contents
 
-*changesex;
+*changesex;    *ea-changesex*
 
 This command will change the gender for the attached character's account. If it 
 was male, it will become female, if it was female, it will become male. The 
@@ -3527,7 +3527,7 @@ gender is changed is suggested.
 
 Return to the table of contents
 
-*waitingroom "<chatroom name>",<limit>{,<event label>,<trigger>};
+*waitingroom "<chatroom name>",<limit>{,<event label>,<trigger>};    *ea-waitingroom*
 
 This command will create a chat room, owned by the NPC object running this 
 script and displayed above the NPC sprite.
@@ -3560,7 +3560,7 @@ of waiting rooms.
 
 Return to the table of contents
 
-*delwaitingroom {"<NPC object name"};
+*delwaitingroom {"<NPC object name"};    *ea-delwaitingroom*
 
 This command will delete a waiting room. If no parameter is given, it will 
 delete a waiting room attached to the NPC object running this command, if it is, 
@@ -3573,8 +3573,8 @@ air.
 
 Return to the table of contents
 
-*enablewaitingroomevent {"<NPC object name>"};
-*disablewaitingroomevent {"<NPC object name>"};
+*enablewaitingroomevent {"<NPC object name>"};    *ea-enablewaitingroomevent*
+*disablewaitingroomevent {"<NPC object name>"};    *ea-disablewaitingroomevent*
 
 This will enable and disable triggering the waiting room event (see 
 'waitingroom') respectively. Optionally giving an NPC object name will do that 
@@ -3590,7 +3590,7 @@ characters are present in the room to mess up the script.
 
 Return to the table of contents
 
-*getwaitingroomstate(<information type>{,"<NPC object name>"})
+*getwaitingroomstate(<information type>{,"<NPC object name>"})    *ea-getwaitingroomstate*
 
 This function will return information about the wating room state for the 
 attached waiting room or for a waiting room attached to the specified NPC if 
@@ -3614,7 +3614,7 @@ The valid information types are:
 
 Return to the table of contents
 
-*warpwaitingpc "<map name>",<x>,<y>{,<number of people>};
+*warpwaitingpc "<map name>",<x>,<y>{,<number of people>};    *ea-warpwaitingpc*
 
 This command will warp the amount of characters equal to the trigger number of 
 the waiting room chat attached to the NPC object running this command to the 
@@ -3643,7 +3643,7 @@ example.
 
 Return to the table of contents
 
-*waitingroomkickall {"<NPC object name>"};
+*waitingroomkickall {"<NPC object name>"};    *ea-waitingroomkickall*
 
 This command would kick everybody out of a specified waiting room chat. IF it 
 was properly linked into the script interpreter which it isn't, even though the 
@@ -3652,8 +3652,8 @@ releases.
 
 Return to the table of contents
 
-*attachrid(<Account ID>)
-*detachrid
+*attachrid(<Account ID>)    *ea-attachrid*
+*detachrid    *ea-detachri*
 
 A 'RID' is an ID of a character who caused the NPC script to run, as has been 
 explained above in the introduction section. Quite a bit of commands want a RID 
@@ -3697,14 +3697,14 @@ close;
 
 Return to the table of contents
 
-*isloggedin(<account id>)
+*isloggedin(<account id>)    *ea-isloggedin*
 
 This function returns 1 if the specified character is logged in and 0 if they 
 aren't.
 
 Return to the table of contents
 
-*setmapflagnosave "<map name>","<alternate map name>",<x>,<y>;
+*setmapflagnosave "<map name>","<alternate map name>",<x>,<y>;    *ea-setmapflagnosave*
 
 This command sets the 'nosave' flag for the specified map and also gives an 
 alternate respawn-upon-relogin point.
@@ -3716,7 +3716,7 @@ specified.
 
 Return to the table of contents
 
-*setmapflag "<map name>",<flag>;
+*setmapflag "<map name>",<flag>;    *ea-setmapflag*
 
 This command marks a specified map with a map flag given. Map flags alter the 
 behavior of the map, you can see the list of the available ones in 
@@ -3733,14 +3733,14 @@ mf_fireworks) and whether day/night will be in effect on this map (mf_indoors).
 
 Return to the table of contents
 
-*removemapflag "<map name>",<flag>;
+*removemapflag "<map name>",<flag>;    *ea-removemapflag*
 
 This command removes a mapflag from a specified map. See 'setmapflag'.
 
 Return to the table of contents
 
-*pvpon "<map name>";
-*pvpoff "<map name>";
+*pvpon "<map name>";    *ea-pvpon*
+*pvpoff "<map name>";    *ea-pvpoff*
 
 These commands will turn PVP mode for the specified maps on and off. Beside 
 setting the flags referred to in 'setmapflag', 'pvpon' will also create a PVP 
@@ -3748,8 +3748,8 @@ timer and ranking as will @pvpon GM command do.
 
 Return to the table of contents
 
-*gvgon "<map name>";
-*gvgoff "<map name>";
+*gvgon "<map name>";    *ea-gvgon*
+*gvgoff "<map name>";    *ea-gvgoff*
 
 These commands will turn GVG mode for the specified maps on and off, setting up 
 appropriate map flags. In GVG mode, maps behave as if during the time of WoE, 
@@ -3757,7 +3757,7 @@ even though WoE itself may or may not actually be in effect.
 
 Return to the table of contents
 
-*emotion <emotion number>;
+*emotion <emotion number>;    *ea-emotion*
 
 This command makes the NPC object display an emoticon sprite above their own as 
 if they were a player doing that emotion. For a full list of emotion numbers, 
@@ -3766,7 +3766,7 @@ and 'e_gasp' (the exclamation mark).
 
 Return to the table of contents
 
-*maprespawnguildid "<map name>",<guild id>,<flag>;
+*maprespawnguildid "<map name>",<guild id>,<flag>;    *ea-maprespawnguildid*
 
 This command goes through the specified map and for each player and monster 
 found there does stuff.
@@ -3786,8 +3786,8 @@ For examples, check the WoE scripts in the distribution.
 
 Return to the table of contents
 
-*agitstart;
-*agitend;
+*agitstart;    *ea-agitstart*
+*agitend;    *ea-agitend*
 
 These two commands will start and end War of Emperium.
 
@@ -3800,8 +3800,8 @@ in turn, are triggered by clock with an 'OnClock<time>:' time-triggering label.
 
 Return to the table of contents
 
-*agitcheck(0)
-*agitcheck 1;
+*agitcheck(0)    *ea-agitcheck*
+*agitcheck 1;    *ea-agitcheck*
 
 These function and command will let you check whether the server is currently in 
 the War of Emperium mode. (that is, if 'agit_flag' is set. Even if it is set, 
@@ -3812,7 +3812,7 @@ variable @agit_flag to 1 if the server is in WoE mode and 0 if it isn't.
 
 Return to the table of contents
 
-*flagemblem <guild id>;
+*flagemblem <guild id>;    *ea-flagemblem*
 
 This command only works when run by the NPC objects which have sprite id 722, 
 which is a 3D guild flag sprite. If it isn't, the data will change, but nothing 
@@ -3831,15 +3831,15 @@ returns a guild id:
 
 Return to the table of contents
 
-*getcastlename("<map name>")
+*getcastlename("<map name>")    *ea-getcastlename*
 
 This function returns the name of the castle when given the map name for that 
 castle. The data is read from 'db/castle_db.txt'.
 
 Return to the table of contents
 
-*getcastledata("<map name>",<type of data>)
-*setcastledata "<map name>",<type of data>,<value>;
+*getcastledata("<map name>",<type of data>)    *ea-getcastledata*
+*setcastledata "<map name>",<type of data>,<value>;    *ea-setcastledata*
 
 This function returns the castle ownership information for the castle referred 
 to by it's map name. Castle information stored in 'save\castle.txt' for the TXT 
@@ -3875,7 +3875,7 @@ anything, obviously.
 
 Return to the table of contents
 
-*requestguildinfo <guild id>,"<event label>";
+*requestguildinfo <guild id>,"<event label>";    *ea-requestguildinfo*
 
 This command requests the guild data from the char server and merrily continues 
 with the execution. Whenever the guild information becomes available (which 
@@ -3885,7 +3885,7 @@ the specified event as in a 'doevent' call.
 
 Return to the table of contents
 
-*getequipcardcnt(<equipment slot>)
+*getequipcardcnt(<equipment slot>)    *ea-getequipcardcnt*
 
 This function will return the number of cards that have been compounded onto a 
 specific equipped item for the invoking character. See 'getequipid' for a list 
@@ -3893,7 +3893,7 @@ of possible equipment slots.
 
 Return to the table of contents
 
-*successremovecards <equipment slot>;
+*successremovecards <equipment slot>;    *ea-successremovecards*
 
 This command will remove all cards from the item found in the specified 
 equipment slot of the invoking character, create new card items and give them to 
@@ -3902,7 +3902,7 @@ success effect.
 
 Return to the table of contents
 
-*failedremovecards <equipment slot>,<type>;
+*failedremovecards <equipment slot>,<type>;    *ea-failedremovecards*
 
 This command will remove all cards from the item found in the specified 
 equipment slot of the invoking character. 'type' determines what happens to the 
@@ -3916,7 +3916,7 @@ Whatever the type is, it will also show a failure effect on screen.
 
 Return to the table of contents
 
-*marriage("<spouse name>");
+*marriage("<spouse name>");    *ea-marriage*
 
 This function will marry two characters, the invoking character and the one 
 referred to by name given, together, setting them up as each other's marriage 
@@ -3930,14 +3930,14 @@ both of these characters. No rings will be given and no effects will be shown.
 
 Return to the table of contents
 
-*wedding;
+*wedding;    *ea-wedding*
 
 This command will call up wedding effects - the music and confetti - centered on 
 the invoking character.
 
 Return to the table of contents
 
-*divorce()
+*divorce()    *ea-divorce*
 
 This function will un-marry the invoking character from whoever they were 
 married to. Both will no longer be each other's marriage partner, (at least in 
@@ -3949,14 +3949,14 @@ players, telling them they are now divorced.
 
 Return to the table of contents
 
-*ispartneron()
+*ispartneron()    *ea-ispartneron*
 
 This function returns 1 if the invoking character's marriage partner is 
 currently online and 0 if they are not or if the character has no partner.
 
 Return to the table of contents
 
-*getpartnerid()
+*getpartnerid()    *ea-getpartnerid*
 
 This function returns the character ID of the invoking character's marriage 
 partner, if any. If the invoking character is not married, it will return 0, 
@@ -3967,7 +3967,7 @@ which is a quick way to see if they are married:
 
 Return to the table of contents
 
-*warppartner("<map name>",<x>,<y>);
+*warppartner("<map name>",<x>,<y>);    *ea-warppartner*
 
 This function will find the invoking character's marriage partner, if any, and 
 warp them to the map and coordinates given. Go kidnap that spouse. :) It will 
@@ -3977,8 +3977,8 @@ normally translate to random coordinates.
 
 Return to the table of contents
 
-*adopt "<parent name>","<parent name>","<novice name>";
-*adopt("<parent name>","<parent name>","<novice name>");
+*adopt "<parent name>","<parent name>","<novice name>";    *ea-adopt*
+*adopt("<parent name>","<parent name>","<novice name>");    *ea-adopt*
 
 This command will set up a novice as a baby of a married couple. All three are 
 referred to by character name. The correct variables are set on all three 
@@ -3998,7 +3998,7 @@ online.
 
 Return to the table of contents
 
-*getitemname(<item id>)
+*getitemname(<item id>)    *ea-getitemname*
 
 Given the database ID number of an item, this function will return the text 
 stored in the 'japanese name' field (which, in eAthena, stores an english name 
@@ -4006,7 +4006,7 @@ the players would normally see on screen.)
 
 Return to the table of contents
 
-*makepet <pet id>;
+*makepet <pet id>;    *ea-makepet*
 
 This command will create a pet egg and put it in the invoking character's 
 inventory. The kind of pet is specified by pet ID numbers listed in 
@@ -4022,7 +4022,7 @@ server and the egg will disappear when anyone tries to hatch it.
 
 Return to the table of contents
 
-*getexp <base xp>,<job xp>;
+*getexp <base xp>,<job xp>;    *ea-getexp*
 
 This command will give the invoking character a specified number of base and job 
 experience points. Can be used as a quest reward. Negative amounts of experience 
@@ -4042,7 +4042,7 @@ You can also reduce the ammount of experience points:
 
 Return to the table of contents
 
-*getinventorylist;
+*getinventorylist;    *ea-getinventorylist*
 
 This command sets a bunch of arrays with a complete list of whatever the 
 invoking character has in their inventory, including all the data needed to 
@@ -4071,7 +4071,7 @@ Notice that the variables this command generates are all local and numeric.
 
 Return to the table of contents
 
-*getskilllist;
+*getskilllist;    *ea-getskilllist*
 
 This command sets a bunch of arrays with a complete list of skills the 
 invoking character has. Here's what you get:
@@ -4088,7 +4088,7 @@ skills a character has.
 
 Return to the table of contents
 
-*clearitem;
+*clearitem;    *ea-clearitem*
 
 This command will destroy all items the invoking character has in their 
 inventory. (that includes equipped items) It will not affect anything else, like 
@@ -4096,7 +4096,7 @@ storage or cart.
 
 Return to the table of contents
 
-*classchange <view id>,<type>;
+*classchange <view id>,<type>;    *ea-classchange*
 
 This command is very ancient, it's origins are clouded in mystery. 
 It will send a 'display id change' packet to everyone in the immediate area of 
@@ -4118,7 +4118,7 @@ do, but this will only happen in a later SVN revision.
 
 Return to the table of contents
 
-*misceffect <effect number>;
+*misceffect <effect number>;    *ea-misceffect*
 
 This command, if run from an NPC object that has a sprite, will call up a 
 specified effect number, centered on the NPC sprite. If the running code does 
@@ -4132,8 +4132,8 @@ those that actually work may differ greatly between client versions.
 
 Return to the table of contents
 
-*soundeffect "<effect filename>",<number>
-*soundeffectall "<effect filename>",<number>
+*soundeffect "<effect filename>",<number>    *ea-soundeffect*
+*soundeffectall "<effect filename>",<number>    *ea-soundeffectall*
 
 These two commands will play a sound effect to either the invoking character 
 only 'soundeffect' or everyone around ('soundeffectall'). If the running code 
@@ -4154,7 +4154,7 @@ You can add your own effects this way, naturally.
 
 Return to the table of contents
 
-*mapwarp "<from map>","<to map>",<x>,<y>;
+*mapwarp "<from map>","<to map>",<x>,<y>;    *ea-mapwarp*
 
 This command will collect all characters located on the From map and warp them 
 wholesale to the same point on the To map, or randomly distribute them there if 
@@ -4163,7 +4163,7 @@ will mean randomly shuffling everyone on the same map.
 
 Return to the table of contents
 
-*mobcount("<map name>","<event label>")
+*mobcount("<map name>","<event label>")    *ea-mobcount*
 
 This function will count all the monsters on the specified map that have a given 
 event label and return the number or 0 if it can't find any. Naturally, only 
@@ -4178,7 +4178,7 @@ for any such map.
 
 Return to the table of contents
 
-*strmobinfo(<type>,<monster id>);
+*strmobinfo(<type>,<monster id>);    *ea-strmobinfo*
 
 This function will return information about a monster record in the database, as 
 per 'db/mob_db.txt'. Type is the kind of information returned. Valid types are:
@@ -4194,7 +4194,7 @@ per 'db/mob_db.txt'. Type is the kind of information returned. Valid types are:
 
 Return to the table of contents
 
-*guardian "<map name>",<x>,<y>,"<name to show>",<mob id>,<amount>{,"<event label>"};
+*guardian "<map name>",<x>,<y>,"<name to show>",<mob id>,<amount>{,"<event label>"};    *ea-guardian*
 
 This command is roughly equivalent to 'monster', but is meant to be used with 
 castle guardian monsters and will only work with them. It will set the guardian 
@@ -4203,7 +4203,7 @@ set the things up that only castle guardians need.
 
 Return to the table of contents
 
-*guardianinfo(<guardian number>)
+*guardianinfo(<guardian number>)    *ea-guardianinfo*
 
 This function will return the current hit point value for the specified guardian 
 number, if such guardian is currently installed. This function will only work if 
@@ -4214,7 +4214,7 @@ If no guardian is installed in this slot, the function will return -1.
 
 Return to the table of contents
 
-*Pet AI commands
+*Pet AI commands    *ea-Pet*
 
 These commands will only work if the invoking character has a pet, and are meant 
 to be executed from pet scripts. They will modify the pet AI decision-making for 
@@ -4225,27 +4225,27 @@ time for a specific pet. A pet may have 'petloot', 'petskillbonus',
 the same time. 'petheal' is deprecated and is no longer used in the default pet 
 scripts. 
 
-*petskillbonus <bonus type>,<value>,<duration>,<delay>;
+*petskillbonus <bonus type>,<value>,<duration>,<delay>;    *ea-petskillbonus*
 
 This command will make the pet give a bonus to the owner's stat (bonus type -
 bInt,bVit,bDex,bAgi,bLuk,bStr,bSpeedRate - for a full list, see the values 
 starting with 'b' in 'db/const.txt')
 
-*petrecovery <status type>,<delay>;
+*petrecovery <status type>,<delay>;    *ea-petrecovery*
 
 This command will make the pet cure a specified status condition. The curing 
 actions will occur once every Delay seconds. For a full list of status 
 conditions that can be cured, see the list of 'SC_' status condition constants 
 in 'db/const.txt'
 
-*petloot <max items>;
+*petloot <max items>;    *ea-petloot*
 
 This command will turn on pet looting, with a maximum number of items to loot 
 specified. Pet will store items and return them when the maximum is reached or 
 when pet performance is activated.
 
-*petskillsupport <skill id>,<skill level>,<delay>,<percent hp>,<percent sp>;
-*petheal <level>,<delay>,<percent hp>,<percent sp>;
+*petskillsupport <skill id>,<skill level>,<delay>,<percent hp>,<percent sp>;    *ea-petskillsupport*
+*petheal <level>,<delay>,<percent hp>,<percent sp>;    *ea-petheal*
 
 This will make the pet use a specified support skill on the owner whenever the 
 HP and SP are below the given percent values, with a specified delay time 
@@ -4255,8 +4255,8 @@ between activations. The skill numbers are as per 'db/skill_db.txt'.
 It's not quite certain who's stats will be used for the skills cast, the 
 character's or the pets. Probably, Skotlex can answer that question.
 
-*petskillattack <skill id>,<skill level>,<rate>,<bonusrate>;
-*petskillattack2 <skill id>,<damage>,<number of attacks>,<rate>,<bonusrate>;
+*petskillattack <skill id>,<skill level>,<rate>,<bonusrate>;    *ea-petskillattack*
+*petskillattack2 <skill id>,<damage>,<number of attacks>,<rate>,<bonusrate>;    *ea-petskillattack2*
 
 These two commands will make the pet cast an attack skill on the enemy the pet's 
 owner is currently fighting. Skill IDs and levels are as per 'petskillsupport'. 
@@ -4287,7 +4287,7 @@ Nobody tried this before, so you're essentially on your own here.
 
 Return to the table of contents
 
-*skilleffect <skill id>,<number>;
+*skilleffect <skill id>,<number>;    *ea-skilleffect*
 
 This command will display the visual and sound effects of a specified skill (see 
 'db/skill_db.txt' for a full list of skills) on the invoking character's sprite. 
@@ -4309,7 +4309,7 @@ effect displays a floating number, the number given will float up.
 
 Return to the table of contents
 
-*npcskilleffect <skill id>,<number>,<x>,<y>;
+*npcskilleffect <skill id>,<number>,<x>,<y>;    *ea-npcskilleffect*
 
 This command behaves identically to 'skilleffect', however, the effect will not 
 be centered on the invoking character's sprite, nor on the NPC sprite, if any, 
@@ -4318,7 +4318,7 @@ character.
 
 Return to the table of contents
 
-*specialeffect <effect number>;
+*specialeffect <effect number>;    *ea-specialeffect*
 
 This command will display special effect with the given number, centered on the 
 specified NPCs coordinates, if any. For a full list of special effect numbers 
@@ -4328,14 +4328,14 @@ released after April 2005.)
 
 Return to the table of contents
 
-*specialeffect2 <effect number>;
+*specialeffect2 <effect number>;    *ea-specialeffect2*
 
 This command behaves identically to the 'specialeffect', but the effect will be 
 centered on the invoking character's sprite.
 
 Return to the table of contents
 
-*nude; 
+*nude;     *ea-nude*
 
 This command will unequip anything equipped on the invoking character.
 
@@ -4344,9 +4344,9 @@ everything not equippable by the new job class anyway.
 
 Return to the table of contents
 
-*gmcommand "<character name>:<command line>";
-*atcommand "<character name>:<command line>";
-*charcommand "<character name>:<command line>";
+*gmcommand "<character name>    *ea-gmcommand*:<command line>";
+*atcommand "<character name>    *ea-atcommand*:<command line>";
+*charcommand "<character name>    *ea-charcommand*:<command line>";
 
 This command will run the given command line exactly as if it was typed in from 
 the keyboard by the player connected to the invoking character, and that 
@@ -4375,7 +4375,7 @@ one.
 
 Return to the table of contents
 
-*message "<character name>","<message>";
+*message "<character name>","<message>";    *ea-message*
 
 That command will send a message to the chat window of the character specified 
 by name. The text will also appear above the head of that character. It will not 
@@ -4383,7 +4383,7 @@ be seen by anyone else.
 
 Return to the table of contents
 
-*npctalk "<message>";
+*npctalk "<message>";    *ea-npctalk*
 
 This command will display a message to the surrounding area as if the NPC object 
 running it was a player talking - that is, above their head and in the chat 
@@ -4396,7 +4396,7 @@ complete the effect.
 
 Return to the table of contents
 
-*hasitems(0)
+*hasitems(0)    *ea-hasitems*
 
 This function will return 1 if the invoking character has anything at all in 
 their inventory and 0 if they do not. Even though the argument is not used for 
@@ -4404,7 +4404,7 @@ anything, it is required.
 
 Return to the table of contents
 
-*getlook(<type>)
+*getlook(<type>)    *ea-getlook*
 
 This function will return the number for the current look value of the invoking 
 character specified by type. See 'setlook' for valid look types.
@@ -4414,7 +4414,7 @@ dressed in black. :)
 
 Return to the table of contents
 
-*getsavepoint(<information type>)
+*getsavepoint(<information type>)    *ea-getsavepoint*
 
 This function will return information about the invoking character's save point. 
 You can use it to let a character swap between several recorded savepoints. 
@@ -4426,9 +4426,9 @@ Available information types are:
 
 Return to the table of contents
 
-*npcspeed <speed value>;
-*npcwalkto <x>,<y>;
-*npcstop;
+*npcspeed <speed value>;    *ea-npcspeed*
+*npcwalkto <x>,<y>;    *ea-npcwalkto*
+*npcstop;    *ea-npcstop*
 
 These commands will make the NPC object in question move around the map. As they 
 currently are, they are a bit buggy and are not useful for much more than making 
@@ -4454,7 +4454,7 @@ sprite based sprite id in 'db/mob-avail.txt' with this.
 
 Return to the table of contents
 
-*getmapxy("<variable for map name>",<variable for x>,<variable for y>,<type>{,"<search string>"})
+*getmapxy("<variable for map name>",<variable for x>,<variable for y>,<type>{,"<search string>"})    *ea-getmapxy*
 
 This function will locate a character object, NPC object or pet's coordinates 
 and place their coordinates into the variables specified when calling it. It 
@@ -4501,7 +4501,7 @@ Notice that NPC objects disabled with 'disablenpc' will still be located.
 
 Return to the table of contents
 
-*guildgetexp <amount>;
+*guildgetexp <amount>;    *ea-guildgetexp*
 
 This will give the specified amount of guild experience points to the guild the 
 invoking character belongs to. It will silently fail if they do not belong to 
@@ -4509,9 +4509,9 @@ any guild.
 
 Return to the table of contents
 
-*skilluseid <skill>,<level>;
-*doskill <skill>,<level>;
-*skillusepos <skill>,<level>,<x>,<y>;
+*skilluseid <skill>,<level>;    *ea-skilluseid*
+*doskill <skill>,<level>;    *ea-doskill*
+*skillusepos <skill>,<level>,<x>,<y>;    *ea-skillusepos*
 
 These commands will cause the invoking character to use a specified skill at the 
 specified level, as if they had that skill, with their current level and stats. 
@@ -4526,7 +4526,7 @@ will not work if the skill is supposed to be targeted on character or monster.
 
 Return to the table of contents
 
-*logmes "<message>";
+*logmes "<message>";    *ea-logmes*
 
 This command will write the message given to the map server npc log file, as 
 specified in 'conf/log_athena.conf'. In the TXT version of the server, the log 
@@ -4538,7 +4538,7 @@ If logs are not enabled, nothing will happen.
 
 Return to the table of contents
 
-*summon "<monster name>",<mob id>{,"<event label>"};
+*summon "<monster name>",<mob id>{,"<event label>"};    *ea-summon*
 
 This command will summon a monster. (see also 'monster') Unlike monsters spawned 
 with other commands, this one will set up the monster to fight to protect the 
@@ -4557,8 +4557,8 @@ run as if by 'donpcevent'.
 
 Return to the table of contents
 
-*isnight()
-*isday()
+*isnight()    *ea-isnight*
+*isday()    *ea-isday*
 
 These functions will return 1 or 0 depending on whether the server is in night 
 mode or day mode. 'isnight' returns 1 if it's night and 0 if it isn't, 'isday' 
@@ -4571,7 +4571,7 @@ more:
 
 Return to the table of contents
 
-*isequipped(<card id>{,<card id>{,<card id>{,<card id>}}})
+*isequipped(<card id>{,<card id>{,<card id>{,<card id>}}})    *ea-isequipped*
 
 This function will return 1 if the invoking character has all of the card item 
 IDs given inserted into slots in the equipment they are currently wearing at the 
@@ -4589,7 +4589,7 @@ in February 2005, but it will work just fine in normal NPC scripts.
 
 Return to the table of contents
 
-*isequippedcnt(<card id>{,<card id>{,<card id>{,<card id>}}})
+*isequippedcnt(<card id>{,<card id>{,<card id>{,<card id>}}})    *ea-isequippedcnt*
 
 This function is similar to 'isequipped', but instead of 1 or 0, it will return 
 the number of cards in the list given that were found on the invoking character.
@@ -4598,7 +4598,7 @@ the number of cards in the list given that were found on the invoking character.
 
 Return to the table of contents
 
-*cardscnt()
+*cardscnt()    *ea-cardscnt*
 
 This function will return the number of cards inserted into the weapon currently 
 equipped on the invoking character.
@@ -4608,7 +4608,7 @@ While this function was meant for item scripts, it will work outside them:
 
 Return to the table of contents
 
-*getrefine()
+*getrefine()    *ea-getrefine*
 
 This function will return the number of plusses the weapon currently equipped on 
 the invoking character has been refined for.
@@ -4618,8 +4618,8 @@ While this function was meant for item scripts, it will work outside them:
 
 Return to the table of contents
 
-*day;
-*night;
+*day;    *ea-day*
+*night;    *ea-night*
 
 These two commands will switch the entire server between day and night mode. 
 Depending on the configuration, it may cause differing client effects. If your 
@@ -4656,7 +4656,7 @@ your own:
 
 Return to the table of contents
 
-*getusersname;
+*getusersname;    *ea-getusersname*
 
 This command will give the invoking character a list of names of the connected 
 characters (including themselves) into an NPC script message window (see 'mes') 
@@ -4666,21 +4666,21 @@ You need to put a 'close' after that yourself.
 
 Return to the table of contents
 
-*dispbottom "<message>";
+*dispbottom "<message>";    *ea-dispbottom*
 
 This command will send the given message into the invoking character's chat 
 window.
 
 Return to the table of contents
 
-*recovery;
+*recovery;    *ea-recovery*
 
 This command will revive and restore full HP and SP to all characters currently 
 connected to the server.
 
 Return to the table of contents
 
-*getpetinfo(<type>)
+*getpetinfo(<type>)    *ea-getpetinfo*
 
 This function will return pet information for the pet the invoking character 
 currently has active. Valid types are:
@@ -4696,7 +4696,7 @@ currently has active. Valid types are:
 
 Return to the table of contents
 
-*checkequipedcard(<card id>)
+*checkequipedcard(<card id>)    *ea-checkequipedcard*
 
 This function will return 1 if the card specified by it's item ID number is 
 inserted into any equipment they have in their inventory, currently equipped or 
@@ -4704,14 +4704,14 @@ not.
 
 Return to the table of contents
 
-*globalmes "message";
+*globalmes "message";    *ea-globalmes*
 
 This command will send a message to the chat window of all currently connected 
 characters.
 
 Return to the table of contents
 
-*jump_zero (<condition>),<label>;
+*jump_zero (<condition>),<label>;    *ea-jump_zero*
 
 This command works kinda like an 'if'+'goto' combination in one go. (See 'if'). 
 If the condition is false (equal to zero) this command will immediately jump to 
@@ -4722,7 +4722,7 @@ optimisation.
 
 Return to the table of contents
 
-*select("<option>"{,"<option>"..."<option>"})
+*select("<option>"{,"<option>"..."<option>"})    *ea-select*
 
 This function is a handy replacement for 'menu' for some specific cases where 
 you don't want a complex label structure - like, for example, asking simple yes-
@@ -4739,7 +4739,7 @@ strings are last in the list of options.
 
 Return to the table of contents
 
-*getmapmobs("<map name>")
+*getmapmobs("<map name>")    *ea-getmapmobs*
 
 This function will return the total count of monsters currently located on the 
 specified map. If the map name is given as "this", the map the invoking 
@@ -4748,7 +4748,7 @@ character while the map is "this", it will return -1.
 
 Return to the table of contents
 
-*unequip <equipment slot>;
+*unequip <equipment slot>;    *ea-unequip*
 
 This command will unequip whatever is currently equipped in the invoking 
 character's specified equipment slot. For a full list of possible equipment 
@@ -4759,10 +4759,10 @@ them. (Which is a good thing.)
 
 Return to the table of contents
 
-*defpattern <set number>,"<regular expression pattern>","<event label>";
-*activatepset <set number>;
-*deactivatepset <set number>;
-*deletepset <set number>;
+*defpattern <set number>,"<regular expression pattern>","<event label>";    *ea-defpattern*
+*activatepset <set number>;    *ea-activatepset*
+*deactivatepset <set number>;    *ea-deactivatepset*
+*deletepset <set number>;    *ea-deletepset*
 
 This set of commands is only available if the server is compiled with regular 
 expressions library enabled. Default compilation and most binary distributions 
@@ -4805,7 +4805,7 @@ they want it so much.
 
 Return to the table of contents
 
-*getstrlen("<string>")
+*getstrlen("<string>")    *ea-getstrlen*
 
 This function will return the length of the string given as an argument. It is 
 useful to check if anything input by the player exceeds name length limits and 
@@ -4813,15 +4813,15 @@ other length limits and asking them to try to input something else.
 
 Return to the table of contents
 
-*charisalpha("<string>",<position>)
+*charisalpha("<string>",<position>)    *ea-charisalpha*
 
 This function will return 1 if the character number Position in the given string 
 is a letter, 0 if it isn't a letter but a digit or a space.
 
 Return to the table of contents
 
-*getnameditem(<item id>,"<name to inscribe>");
-*getnameditem("<item name>","<name to inscribe>");
+*getnameditem(<item id>,"<name to inscribe>");    *ea-getnameditem*
+*getnameditem("<item name>","<name to inscribe>");    *ea-getnameditem*
 
 This function is equivalent to using 'getitem', however, it will not just give 
 the character an item object, but will also inscribe it with a specified 
@@ -4839,7 +4839,7 @@ database as an item name and will return 0 if nothing is found.
 
 Return to the table of contents
 
-*getitemslots(<item ID>)
+*getitemslots(<item ID>)    *ea-getitemslots*
 
 This function will look up the item with the specified ID number in the database 
 and return the number of slots this kind of items has - 0 if they are not 
@@ -4848,7 +4848,7 @@ someone messed up the item database. It will return -1 if there is no such item.
 
 Return to the table of contents
 
-*fakenpcname "<npc object name>","<npc display name>",<npc sprite id>
+*fakenpcname "<npc object name>","<npc display name>",<npc sprite id>    *ea-fakenpcname*
 
 This function will change the specified NPC object's display name to the one you 
 give. While the name the players will see will now be different, the real object 
@@ -4860,8 +4860,8 @@ object.
 
 Return to the table of contents
 
-*warpparty "<map name>",<X>,<Y>,<Party ID>
-*warpguild "<map name>",<X>,<Y>,<Guild ID>
+*warpparty "<map name>",<X>,<Y>,<Party ID>    *ea-warpparty*
+*warpguild "<map name>",<X>,<Y>,<Guild ID>    *ea-warpguild*
 
 Allow you to warp everyone inside a specific party/guild to another place
 
