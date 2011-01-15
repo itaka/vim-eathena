@@ -1,5 +1,64 @@
 *eAthena-script-documentation*
 
+|Authors:|
+    |Original:| Fredzilla
+      |Helped:| Terminal Vertex & Z3R0 - Helped define getmapxy
+	        HappyDenn              - Gave everything to do with getpartymember a great help
+	        Maeki Rika             - A section on general concepts and lots of other updates and additions.
+	        zBuffer                - Available variable types. 
+     |Current:| Itaka <itaka.dev@gmail.com> (as of version 1.2)
+==============================================================================
+
+|eAthena| |Script|
+
+    1.  |Introduction|
+    2.  |Structure|
+    3.  |Syntax|
+    4.  |Script| |loading| |structure|
+    5.  |What| |a| |RID| |is| |and| |why| |do| |you| |need| |to| |know|
+    6.  |Item| |and| |pet| |scripts|
+    7.  |Numbers|
+    8.  |Variables| |and| |scope|
+    9.  |Arrays|
+    10. |Variable| |type| |availability|
+    11. |Special| |variables|
+    12. |Operators|
+    13. |Labels|
+    14. |Scripting| |commands| |and| |functions|
+
+==============================================================================
+
+INTRODUCTION                           *ea-introduction* 
+
+This document is a reference manual for all the scripting commands and functions 
+available in current eAthena SVN. It is not a simple tutorial. When people tell 
+you to "Read The F***ing Manual", they mean this.
+
+The information was mostly acquired through looking up how things actually work 
+in the source code of the server, which was written by many people over time, 
+and lots of them don't speak English and never left any notes - or are otherwise 
+not available for comments. As such, anything written in here might not be 
+correct, it is only correct to the best of our knowledge, which is limited.
+
+This document is poorly structured and rather messy in general. In fact, further 
+cleaning up and reordering this document is probably pointless, due to upcoming 
+switch to Lua scripting language, which will rid us of most of the problems 
+mentioned herein and make a new manual necessary. But while we have this one, we 
+should make the most of it, and it might be helpful in making sure the new Lua 
+engine can actually do everything useful that the old engine could.
+
+This is not a place to teach you basic programming. This document will not teach 
+you basic programming by itself. It's more of a reference for those who have at 
+least a vague idea of what they want to do and want to know what tools they have 
+available to do it. We've tried to keep it as simple as feasible, but if you 
+don't understand it, getting a clear book on programming in general will help 
+better than yelling around the forum for help.
+
+A little learning never caused anyone's head to explode.
+
+
+==============================================================================
+
 STRUCTURE             *ea-structure*
 ===============================================================================
 
