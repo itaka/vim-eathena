@@ -1,6 +1,6 @@
 Author: Itaka
 email: itaka.dev@gmail.com
-version: 1.1
+version: 1.2
 
 ---------------------------------------------------------------
 If you have Vim
